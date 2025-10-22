@@ -13,13 +13,21 @@ public class Events : MonoBehaviour
     public float frostedScreenDuration = 5f;
     public AudioSource blizzardAudio;
 
+    public bool meteorEvent = false;
+    public CanvasGroup meteorCanvasGroup;
+    public AudioSource meteorAudio;
+
     private bool isEventRunning = false;
 
     void Update()
     {
-        if (blizzardEvent && !isEventRunning) // activate blizzardEvent
+        if (blizzardEvent && !isEventRunning) // activate blizzard event
         {
             StartCoroutine(RunBlizzardEvent());
+        }
+        if (meteorEvent && !isEventRunning) // activate meteor shower event
+        {
+            StartCoroutine(RunMeteorEvent());
         }
     }
 
@@ -37,6 +45,20 @@ public class Events : MonoBehaviour
         yield return StartCoroutine(FadeFrostedScreen());
 
         blizzardEvent = false;
+        isEventRunning = false;
+    }
+
+    IEnumerator RunMeteorEvent()
+    {
+        isEventRunning = true;
+
+        if (!meteorAudio.isPlaying)
+        {
+            meteorAudio.Play();
+        }
+
+        yield return StartCoroutine(FadeInAndOut(meteorCanvasGroup));
+        meteorEvent = false;
         isEventRunning = false;
     }
 
