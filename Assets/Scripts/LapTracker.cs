@@ -8,6 +8,12 @@ public class LapTracker : MonoBehaviour
 {
     public TextMeshProUGUI lapText;
     public int lap = 1;
+    private Events eventsManager;
+
+    void Start()
+    {
+        eventsManager = FindObjectOfType<Events>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,13 +23,13 @@ public class LapTracker : MonoBehaviour
             SetLapText();
         }
     }
+
     void SetLapText()
     {
         lapText.text = "Lap: " + lap.ToString() + "/6";
-        //if (lap >= 6)
-        //{
-        //    LoadEndScene();
-        //}
-
+        if (lap >= 6 && eventsManager != null)
+        {
+            eventsManager.ShowWinScreen();
+        }
     }
 }

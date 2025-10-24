@@ -17,6 +17,8 @@ public class Events : MonoBehaviour
     public CanvasGroup meteorCanvasGroup;
     public AudioSource meteorAudio;
 
+    public CanvasGroup winScreenCanvasGroup;
+
     private bool isEventRunning = false;
 
     void Update()
@@ -112,5 +114,10 @@ public class Events : MonoBehaviour
             yield return null;
         }
         frostedScreen.alpha = 0f;
+    }
+
+    public void ShowWinScreen()
+    {
+        StartCoroutine(FadeInAndOut(winScreenCanvasGroup));
     }
 }
