@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
+    // car settings
     public float accelerationForce = 30f;
     public float reverseForce = 20f;
     public float turnSpeed = 2f;
     public float brakeForce = 1f;
     public bool invertForwardDirection = false;
+
+    //speedometer
+    public TextMeshProUGUI speedText;
+    public float currentSpeed;
 
     private Rigidbody rb;
     private float verticalInput;
@@ -26,6 +32,16 @@ public class CarController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0); // lower center of mass
+    }
+
+    void Update()
+    {
+        currentSpeed = rb.velocity.magnitude * 3.6f; //3.6 converts m/s to km/h
+        
+        if (speedText != null)
+        {
+            speedText.text = Mathf.RoundToInt(currentSpeed).ToString();
+        }
     }
 
     void FixedUpdate()

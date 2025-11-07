@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   master:
     m_OverrideState: 1
     m_Value:
@@ -243,10 +243,10 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 35
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 40
+    m_Value: 100
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 0.5

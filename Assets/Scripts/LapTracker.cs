@@ -8,6 +8,7 @@ public class LapTracker : MonoBehaviour
 {
     public TextMeshProUGUI lapText;
     public int lap = 1;
+    public int enemyLaps = 1;
     private Events eventsManager;
 
     void Start()
@@ -21,6 +22,8 @@ public class LapTracker : MonoBehaviour
         {
             lap = lap + 1;
             SetLapText();
+        } else if (other.gameObject.CompareTag("Enemy")) {
+            enemyLaps = enemyLaps + 1;
         }
     }
 
