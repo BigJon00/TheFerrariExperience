@@ -11,6 +11,7 @@
   <Project Path="Cinemachine.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Core.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
@@ -18,7 +19,6 @@
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.Postprocessing.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Flow.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="com.unity.cinemachine.editor.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
