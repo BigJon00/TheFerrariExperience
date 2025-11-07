@@ -27,7 +27,10 @@ public class RivalCarController : MonoBehaviour
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
+            targetRotation *= Quaternion.Euler(0, 0
+            , 0); // adjust based on your model’s orientation
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+
         }
 
         // Check if reached the current waypoint
