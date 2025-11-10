@@ -40,7 +40,8 @@ public class CarController : MonoBehaviour
         {
             // Forward
             rb.AddForce(forwardDirection * verticalInput * accelerationForce, ForceMode.Acceleration);
-        } else if (verticalInput < 0)
+        }
+        else if (verticalInput < 0)
         {
             // Reverse
             rb.AddForce(forwardDirection * verticalInput * reverseForce, ForceMode.Acceleration);
@@ -60,6 +61,14 @@ public class CarController : MonoBehaviour
         }
 
         HandleEngineAudio();
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Redbull"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 
     void OnMove(InputValue value)
