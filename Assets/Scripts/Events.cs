@@ -34,6 +34,8 @@ public class Events : MonoBehaviour
 
     void Start()
     {
+        HideBlizzardObjects();
+
         if (eventsEnabled && !eventSchedulerRunning)
         {
             StartCoroutine(EventScheduler());
@@ -97,10 +99,12 @@ public class Events : MonoBehaviour
             blizzardAudio.Play();
         }
 
+        ShowBlizzardObjects();
         yield return StartCoroutine(FadeInAndOut(blizzardCanvasGroup));
 
         yield return StartCoroutine(FadeFrostedScreen());
-
+        
+        HideBlizzardObjects();
         blizzardEvent = false;
         isEventRunning = false;
     }
@@ -170,6 +174,33 @@ public class Events : MonoBehaviour
         }
         frostedScreen.alpha = 0f;
     }
+
+    void ShowBlizzardObjects() // activate blizzard objects
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        int activatedCount = 0;
+
+        foreach (GameObject obj in allObjects)
+        {
+            if(obj.CompareTag("Blizzard") && !obj.activeInHierarchy)
+            {
+                obj.SetActive(true);
+                activatedCount++;
+            }
+        }
+        Debug.Log($"Activated {activatedCount} blizzard objects");
+    }
+
+    void HideBlizzardObjects() // deactivate blizzard objects
+    {
+        GameObject[] blizzardObjects = GameObject.FindGameObjectsWithTag("Blizzard");
+        foreach (GameObject obj in blizzardObjects)
+        {
+            obj.SetActive(false);
+        }
+        Debug.Log($"Hidden {blizzardObjects.Length} blizzard objects");
+    }
+
 
     public void ShowWinScreen()
     {
