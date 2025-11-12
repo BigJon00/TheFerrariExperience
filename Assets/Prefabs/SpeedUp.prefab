@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 7987414844312095838}
   - component: {fileID: 1481988781233138781}
   - component: {fileID: 8865883771495515154}
+  - component: {fileID: 5719711231221091429}
   m_Layer: 0
   m_Name: SpeedUp
   m_TagString: SpeedUp
@@ -240,3 +241,15 @@ MonoBehaviour:
   speedBoostMultiplier: 2
   boostDuration: 3
   boostAudio: {fileID: 0}
+--- !u!114 &5719711231221091429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6799100747329727984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d0674b70855f44f906ef0eeee79aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

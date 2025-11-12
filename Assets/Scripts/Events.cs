@@ -7,6 +7,16 @@ public class Events : MonoBehaviour
     public float fadeDuration = 1f;
     public float displayImageDuration = 1f;
 
+    // Event settings
+    public bool eventsEnabled = true;
+    public float minTimeBetweenEvents = 10f;
+    public float maxTimeBetweenEvents = 30f;
+
+    // Event probabilities
+    [Range(0, 100)] public float blizzardChance = 50f;
+    [Range(0, 100)] public float meteorChance = 50f;
+
+    // Event references
     public bool blizzardEvent = false;
     public CanvasGroup blizzardCanvasGroup;
     public CanvasGroup frostedScreen;
@@ -20,6 +30,15 @@ public class Events : MonoBehaviour
     public CanvasGroup winScreenCanvasGroup;
 
     private bool isEventRunning = false;
+    private bool eventSchedulerRunning = false;
+
+    void Start()
+    {
+        if (eventsEnabled && !eventSchedulerRunning)
+        {
+            StartCoroutine(EventScheduler());
+        }
+    }
 
     void Update()
     {
@@ -31,6 +50,42 @@ public class Events : MonoBehaviour
         {
             StartCoroutine(RunMeteorEvent());
         }
+    }
+
+    /////////////////////////////////////////////////////////////////
+  
+    IEnumerator EventScheduler()
+    {
+        eventSchedulerRunning = true;
+        while (eventsEnabled)
+        {
+            float waitTime = Random.Range(minTimeBetweenEvents, maxTimeBetweenEvents);
+            yield return new WaitForSeconds(waitTime);
+            if(!isEventRunning && eventsEnabled)
+            {
+                TriggerRandomEvent();
+            }
+        }
+        eventSchedulerRunning = false;
+    }
+
+    void TriggerRandomEvent()
+    {
+        float totalChance = blizzardChance + meteorChance;
+        if (totalChance <= 0)
+        {
+            return;
+        }
+
+        float randomValue = Random.Range(0f, totalChance);
+        if (randomValue <= blizzardChance)
+        {
+            blizzardEvent = true;
+        } else
+        {
+            meteorEvent = true;
+        }
+  
     }
 
     IEnumerator RunBlizzardEvent()
