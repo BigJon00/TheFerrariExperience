@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Events : MonoBehaviour
-{ 
+{
     public float fadeDuration = 1f;
     public float displayImageDuration = 1f;
 
+    // Event settings
+    public bool eventsEnabled = true;
+    public float minTimeBetweenEvents = 10f;
+    public float maxTimeBetweenEvents = 30f;
+
+    // Event probabilities
+    [Range(0, 100)] public float blizzardChance = 50f;
+    [Range(0, 100)] public float meteorChance = 50f;
+
+    // Event references
     public bool blizzardEvent = false;
     public CanvasGroup blizzardCanvasGroup;
     public CanvasGroup frostedScreen;
@@ -17,7 +27,20 @@ public class Events : MonoBehaviour
     public CanvasGroup meteorCanvasGroup;
     public AudioSource meteorAudio;
 
+    public CanvasGroup winScreenCanvasGroup;
+
     private bool isEventRunning = false;
+    private bool eventSchedulerRunning = false;
+
+    void Start()
+    {
+        HideBlizzardObjects();
+
+        if (eventsEnabled && !eventSchedulerRunning)
+        {
+            StartCoroutine(EventScheduler());
+        }
+    }
 
     void Update()
     {
@@ -31,6 +54,43 @@ public class Events : MonoBehaviour
         }
     }
 
+    /////////////////////////////////////////////////////////////////
+
+    IEnumerator EventScheduler()
+    {
+        eventSchedulerRunning = true;
+        while (eventsEnabled)
+        {
+            float waitTime = Random.Range(minTimeBetweenEvents, maxTimeBetweenEvents);
+            yield return new WaitForSeconds(waitTime);
+            if (!isEventRunning && eventsEnabled)
+            {
+                TriggerRandomEvent();
+            }
+        }
+        eventSchedulerRunning = false;
+    }
+
+    void TriggerRandomEvent()
+    {
+        float totalChance = blizzardChance + meteorChance;
+        if (totalChance <= 0)
+        {
+            return;
+        }
+
+        float randomValue = Random.Range(0f, totalChance);
+        if (randomValue <= blizzardChance)
+        {
+            blizzardEvent = true;
+        }
+        else
+        {
+            meteorEvent = true;
+        }
+
+    }
+
     IEnumerator RunBlizzardEvent()
     {
         isEventRunning = true;
@@ -40,10 +100,12 @@ public class Events : MonoBehaviour
             blizzardAudio.Play();
         }
 
+        ShowBlizzardObjects();
         yield return StartCoroutine(FadeInAndOut(blizzardCanvasGroup));
 
         yield return StartCoroutine(FadeFrostedScreen());
 
+        HideBlizzardObjects();
         blizzardEvent = false;
         isEventRunning = false;
     }
@@ -85,7 +147,7 @@ public class Events : MonoBehaviour
             imageCanvasGroup.alpha = 1 - (timer / fadeDuration);
             yield return null;
         }
-        imageCanvasGroup.alpha = 0f; 
+        imageCanvasGroup.alpha = 0f;
     }
 
     IEnumerator FadeFrostedScreen()
@@ -112,5 +174,37 @@ public class Events : MonoBehaviour
             yield return null;
         }
         frostedScreen.alpha = 0f;
+    }
+
+    void ShowBlizzardObjects() // activate blizzard objects
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        int activatedCount = 0;
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag("Blizzard") && !obj.activeInHierarchy)
+            {
+                obj.SetActive(true);
+                activatedCount++;
+            }
+        }
+        Debug.Log($"Activated {activatedCount} blizzard objects");
+    }
+
+    void HideBlizzardObjects() // deactivate blizzard objects
+    {
+        GameObject[] blizzardObjects = GameObject.FindGameObjectsWithTag("Blizzard");
+        foreach (GameObject obj in blizzardObjects)
+        {
+            obj.SetActive(false);
+        }
+        Debug.Log($"Hidden {blizzardObjects.Length} blizzard objects");
+    }
+
+
+    public void ShowWinScreen()
+    {
+        StartCoroutine(FadeInAndOut(winScreenCanvasGroup));
     }
 }
