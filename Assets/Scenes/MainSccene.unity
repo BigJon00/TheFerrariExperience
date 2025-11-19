@@ -8421,6 +8421,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1977273954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1983112225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983112226}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983112226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983112225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -150}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998635292
 GameObject:
   m_ObjectHideFlags: 0
@@ -10835,6 +10866,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 223ce167b98434849ba7eac106b9927c, type: 2}
+    - target: {fileID: 3839842156091723747, guid: 0272d5b08108c7543b70c3ccbcd7249c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938809068057682443, guid: 0272d5b08108c7543b70c3ccbcd7249c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     - target: {fileID: 3955630654657920286, guid: 0272d5b08108c7543b70c3ccbcd7249c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10920,6 +10961,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 223ce167b98434849ba7eac106b9927c, type: 2}
+    - target: {fileID: 8460521343329377906, guid: 0272d5b08108c7543b70c3ccbcd7249c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Track
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10996,6 +11042,11 @@ PrefabInstance:
       objectReference: {fileID: 824416179}
     - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
         type: 3}
+      propertyPath: trackMargin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
+        type: 3}
       propertyPath: blizzardAudio
       value: 
       objectReference: {fileID: 556704614}
@@ -11006,14 +11057,34 @@ PrefabInstance:
       objectReference: {fileID: 2138255141}
     - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
         type: 3}
+      propertyPath: spawnAreaSize.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
+        type: 3}
+      propertyPath: spawnAreaSize.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
+        type: 3}
       propertyPath: meteorCanvasGroup
       value: 
       objectReference: {fileID: 369357997}
     - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
         type: 3}
+      propertyPath: spawnAreaCenter.z
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
+        type: 3}
       propertyPath: blizzardCanvasGroup
       value: 
       objectReference: {fileID: 1836544810}
+    - target: {fileID: 4481380733862414853, guid: 3541b31f45e953746a0bd1054f8e70f7,
+        type: 3}
+      propertyPath: meteorSpawnDuration
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5926686658022522182, guid: 3541b31f45e953746a0bd1054f8e70f7,
         type: 3}
       propertyPath: m_Name
@@ -11127,3 +11198,4 @@ SceneRoots:
   - {fileID: 1998635293}
   - {fileID: 678885911103132516}
   - {fileID: 965255837}
+  - {fileID: 1983112226}
