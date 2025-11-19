@@ -54,12 +54,19 @@ MonoBehaviour:
   meteorChance: 50
   blizzardEvent: 0
   blizzardCanvasGroup: {fileID: 0}
+  blizzardAudio: {fileID: 0}
   frostedScreen: {fileID: 0}
   frostedScreenDuration: 10
-  blizzardAudio: {fileID: 0}
   meteorEvent: 0
   meteorCanvasGroup: {fileID: 0}
   meteorAudio: {fileID: 0}
+  meteorPrefab: {fileID: 6137969350923214606, guid: d373f0059a0c165438d5ef22edf39a18,
+    type: 3}
+  meteorSpawnDuration: 10
+  minMeteorSpawnRate: 0.5
+  maxMeteorSpawnRate: 2
+  spawnAreaCenter: {x: 0, y: 30, z: 0}
+  spawnAreaSize: {x: 100, y: 10, z: 100}
   winScreenCanvasGroup: {fileID: 0}
 --- !u!114 &1348440167298976592
 MonoBehaviour:
