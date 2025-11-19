@@ -12,7 +12,7 @@ public class SceneHandler : MonoBehaviour
 
     public void PlayMain()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainSccene");
     }
 
     public void PlayTest()
