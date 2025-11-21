@@ -19,6 +19,11 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadScene("TestTrack");
     }
+    
+    public void PlayEnd()
+    {
+        SceneManager.LoadScene("End_Scene");
+    }
 
     public void QuitGame()
     {
