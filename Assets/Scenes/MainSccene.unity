@@ -625,6 +625,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1998635293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1001 &70309225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,6 +699,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1731425cf73de7541b40acd38dba18ec, type: 3}
+=======
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
 --- !u!1 &90187244
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,12 +821,17 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 100852870}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &104597157
+=======
+--- !u!1001 &109260652
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<< HEAD
     m_TransformParent: {fileID: 1494015242}
     m_Modifications:
     - target: {fileID: 4636871227284738347, guid: 1731425cf73de7541b40acd38dba18ec,
@@ -897,6 +905,8 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+=======
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
     m_TransformParent: {fileID: 1498888177}
     m_Modifications:
     - target: {fileID: 1343676195844954086, guid: c02c1666766a2c74e80474066c1303bd,
@@ -2917,12 +2927,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 420903041}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!4 &453835339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7153776043572740721, guid: 1731425cf73de7541b40acd38dba18ec,
     type: 3}
   m_PrefabInstance: {fileID: 1076835419}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
 --- !u!1 &475893184
 GameObject:
   m_ObjectHideFlags: 0
@@ -12597,6 +12610,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1998635293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1001 &2119703463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12670,6 +12684,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1731425cf73de7541b40acd38dba18ec, type: 3}
+=======
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
 --- !u!1001 &2125893005
 PrefabInstance:
   m_ObjectHideFlags: 0
