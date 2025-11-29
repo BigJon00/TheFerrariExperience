@@ -20,10 +20,10 @@ public class LapTracker : MonoBehaviour
     void SetLapText()
     {
         lapText.text = "Lap: " + lap.ToString() + "/6";
-        //if (lap >= 6)
-        //{
-        //    LoadEndScene();
-        //}
+        if (lap >= 6)
+        {
+            SceneManager.LoadScene("End_Scene");
+        }
 
     }
 }
