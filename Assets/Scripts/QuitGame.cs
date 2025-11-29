@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class QuitGame : MonoBehaviour
 {
     // This function can be called by a UI Button's OnClick event
@@ -18,7 +18,7 @@ public class QuitGame : MonoBehaviour
 
         //Debug.Log("Game is exiting."); // Optional: for debugging purposes
     }
-    
+
     // This function demonstrates quitting with a key press (e.g., Escape key)
     void Update()
     {
