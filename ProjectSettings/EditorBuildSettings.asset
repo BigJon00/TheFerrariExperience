@@ -16,8 +16,13 @@ EditorBuildSettings:
     guid: 04be06810fd3f4b4aa8ca27475450d86
   - enabled: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     path: Assets/Scenes/End_Scene.unity
     guid: a659a49f32bd747cc9178543f65c8fff
+=======
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 74f389ab25c04ea41bc2ca1f04bbf0a2
+>>>>>>> parent of 1bb63e0 (Merge pull request #8 from BigJon00/Elizabeth)
 =======
     path: Assets/Scenes/TitleScreen.unity
     guid: 74f389ab25c04ea41bc2ca1f04bbf0a2
