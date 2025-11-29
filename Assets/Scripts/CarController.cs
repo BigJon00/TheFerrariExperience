@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class CarController : MonoBehaviour
 {
+    // car settings
     public float accelerationForce = 30f;
     public float reverseForce = 20f;
     public float turnSpeed = 2f;
@@ -31,7 +33,7 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 forwardDirection = invertForwardDirection ? -transform.forward : transform.forward;
-        float forwardVelocity = Vector3.Dot(rb.linearVelocity, forwardDirection);
+        float forwardVelocity = Vector3.Dot(rb.velocity, forwardDirection);
         bool isMovingForward = forwardVelocity > 0.5f;
         bool isMovingBackward = forwardVelocity < -0.5f;
 
@@ -40,23 +42,24 @@ public class CarController : MonoBehaviour
         {
             // Forward
             rb.AddForce(forwardDirection * verticalInput * accelerationForce, ForceMode.Acceleration);
-        } else if (verticalInput < 0)
+        }
+        else if (verticalInput < 0)
         {
             // Reverse
             rb.AddForce(forwardDirection * verticalInput * reverseForce, ForceMode.Acceleration);
         }
 
         // steering (only effective when moving)
-        if (Mathf.Abs(rb.linearVelocity.magnitude) > 0.5f)
+        if (Mathf.Abs(rb.velocity.magnitude) > 0.5f)
         {
-            float turn = horizontalInput * turnSpeed * (rb.linearVelocity.magnitude / 10f);
+            float turn = horizontalInput * turnSpeed * (rb.velocity.magnitude / 10f);
             rb.MoveRotation(rb.rotation * Quaternion.Euler(0, turn, 0));
         }
 
         // braking
         if (isBraking)
         {
-            rb.AddForce(-rb.linearVelocity.normalized * brakeForce, ForceMode.Acceleration);
+            rb.AddForce(-rb.velocity.normalized * brakeForce, ForceMode.Acceleration);
         }
 
         HandleEngineAudio();
@@ -82,7 +85,7 @@ public class CarController : MonoBehaviour
         if (engineAudio == null) return;
 
         Vector3 forwardDirection = invertForwardDirection ? -transform.forward : transform.forward;
-        float forwardVelocity = Vector3.Dot(rb.linearVelocity, forwardDirection);
+        float forwardVelocity = Vector3.Dot(rb.velocity, forwardDirection);
 
         float currentSpeed = Mathf.Abs(forwardVelocity);
 
@@ -120,5 +123,12 @@ public class CarController : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    // getter methods
+    public float CurrentSpeed
+    {
+        get { return rb.velocity.magnitude * 3.6f; }
     }
 }
