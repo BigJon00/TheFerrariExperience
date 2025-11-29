@@ -171,10 +171,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 89f9cf75fc3ec8a4db1bf568c8bac2dd,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7389984377458079364}
-    - targetCorrespondingSourceObject: {fileID: 100004, guid: 89f9cf75fc3ec8a4db1bf568c8bac2dd,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5951555670186581977}
   m_SourcePrefab: {fileID: 100100000, guid: 89f9cf75fc3ec8a4db1bf568c8bac2dd, type: 3}
 --- !u!1 &2028193466015530905 stripped
@@ -231,24 +227,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.5, z: 3.2}
   m_Center: {x: 0, y: 0.2, z: 0}
---- !u!114 &7389984377458079364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028193466015530905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78ec9fbf0dc0c14dafb6ed4cffa0652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 20
-  acceleration: 5
-  steeringSpeed: 2
-  waypointThreshold: 5
-  waypoints: []
-  stoppingDistance: 0.5
 --- !u!114 &5951555670186581977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,10 +240,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 100
-  acceleration: 10
+  acceleration: 40
   steeringSpeed: 2
-  waypointThreshold: 5
+  waypointThreshold: 10
   waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
