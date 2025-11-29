@@ -15,6 +15,7 @@ public class Events : MonoBehaviour
     // Event probabilities
     [Range(0, 100)] public float blizzardChance = 50f;
     [Range(0, 100)] public float meteorChance = 50f;
+    [Range(0, 100)] public float rainChance = 50f;
 
     // Event references; ~15 seconds each
     public bool blizzardEvent = false;    
@@ -34,6 +35,13 @@ public class Events : MonoBehaviour
     public Vector3 spawnAreaSize = new Vector3(300, 10, 150);
     public float trackMargin = 2f;
 
+    public bool rainEvent = false;
+    public CanvasGroup rainCanvasGroup;
+    public AudioSource rainAudio;
+    public float rainDuration = 15f;
+    public bool isTrackSlippery { get; private set; } = false;
+    public float slipperyMultiplier { get; private set; } = 1f;
+
     public CanvasGroup winScreenCanvasGroup;
 
     private bool isEventRunning = false;
@@ -43,6 +51,7 @@ public class Events : MonoBehaviour
     void Start()
     {
         HideBlizzardObjects();
+        HideRainObjects();
 
         CalculateCombinedTrackBounds();
 
@@ -61,6 +70,10 @@ public class Events : MonoBehaviour
         if (meteorEvent && !isEventRunning) // activate meteor shower event
         {
             StartCoroutine(RunMeteorEvent());
+        }
+        if (rainEvent && !isEventRunning) // activate rain event
+        {
+            StartCoroutine(RunRainEvent());
         }
     }
 
@@ -83,7 +96,7 @@ public class Events : MonoBehaviour
 
     void TriggerRandomEvent()
     {
-        float totalChance = blizzardChance + meteorChance;
+        float totalChance = blizzardChance + meteorChance + rainChance;
         if (totalChance <= 0)
         {
             return;
@@ -94,11 +107,14 @@ public class Events : MonoBehaviour
         {
             blizzardEvent = true;
         }
-        else
+        else if (randomValue <= blizzardChance + meteorChance)
         {
             meteorEvent = true;
         }
-
+        else
+        {
+            rainEvent = true; 
+        }
     }
 
     // Blizzard Event //
@@ -245,6 +261,57 @@ public class Events : MonoBehaviour
             Random.Range(spawnAreaCenter.z - spawnAreaSize.z / 2, spawnAreaCenter.z + spawnAreaSize.z / 2));
     }
 
+    // Rain Event //
+    IEnumerator RunRainEvent()
+    {
+        isEventRunning = true;
+        isTrackSlippery = true;
+        slipperyMultiplier = 0.3f; // Reduce traction to 30%
+
+        if (!rainAudio.isPlaying)
+        {
+            rainAudio.Play();
+        }
+
+        ShowRainObjects();
+        yield return StartCoroutine(FadeInAndOut(rainCanvasGroup));
+        yield return new WaitForSeconds(rainDuration);
+        HideRainObjects();
+        isTrackSlippery = false;
+        slipperyMultiplier = 1f; // Restore traction
+
+        Debug.Log("Rain event over");
+        rainEvent = false;
+        isEventRunning = false;
+    }
+
+    void ShowRainObjects() // activate rain objects
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        int activatedCount = 0;
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag("Rain") && !obj.activeInHierarchy)
+            {
+                obj.SetActive(true);
+                activatedCount++;
+            }
+        }
+        Debug.Log($"Activated {activatedCount} rain objects");
+    }
+
+    void HideRainObjects() // deactivate rain objects
+    {
+        GameObject[] rainObjects = GameObject.FindGameObjectsWithTag("Rain");
+        foreach (GameObject obj in rainObjects)
+        {
+            obj.SetActive(false);
+        }
+        Debug.Log($"Hidden {rainObjects.Length} rain objects");
+    }
+
+    // General Events //
     void CalculateCombinedTrackBounds()
     {
         GameObject[] allTracks = GameObject.FindGameObjectsWithTag("Track");
@@ -275,7 +342,6 @@ public class Events : MonoBehaviour
         }
     }
 
-    // General Events //
     IEnumerator FadeInAndOut(CanvasGroup imageCanvasGroup)
     {
         // Fade in
