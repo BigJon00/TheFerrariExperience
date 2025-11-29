@@ -8,7 +8,7 @@ TagManager:
   - SpeedUp
   - Enemy
   - Blizzard
-  - Rain
+  - youWin
   layers:
   - Default
   - TransparentFX
