@@ -169,7 +169,7 @@ public class CarController : MonoBehaviour
             currentAccelerationForce = accelerationForce * slipperyAccelerationMultiplier;
 
             // Make brakes almost useless
-            currentBrakeForce = brakeForce * 0.1f;
+            currentBrakeForce = brakeForce * 0.8f;
 
             // Add continuous sideways drift when turning
             if (Mathf.Abs(horizontalInput) > 0.1f && rb.velocity.magnitude > 3f)
