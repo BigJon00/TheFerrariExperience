@@ -77,14 +77,14 @@ public class LapTracker : MonoBehaviour
         }
 
         // Check if any enemy has finished (they might finish before player)
-        foreach (var enemy in enemyLaps)
-        {
-            if (enemy.Value >= totalLaps)
-            {
-                EndRace();
-                return;
-            }
-        }
+        //foreach (var enemy in enemyLaps)
+        //{
+        //    if (enemy.Value >= totalLaps)
+        //    {
+        //        EndRace();
+        //        return;
+        //    }
+        //}
     }
 
     void EndRace()
