@@ -118,6 +118,14 @@ public class CarController : MonoBehaviour
                 {
                     engineAudio.Stop();
                 }
+                void Update()
+{
+    if (Keyboard.current.rKey.wasPressedThisFrame)
+    {
+        CheckpointManager.instance.RespawnCar(transform);
+    }
+}
+
             }
         }
     }
