@@ -9,9 +9,15 @@ public class SlipperyObstacle : MonoBehaviour
 
     public AudioSource slipAudio;
 
+    void Start()
+    {
+        //Debug.Log($"SlipperyObstacle started on: {gameObject.name}");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        //Debug.Log($"SlipperyObstacle triggered by: {other.gameObject.name}");
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
@@ -20,6 +26,7 @@ public class SlipperyObstacle : MonoBehaviour
                 {
                     slipAudio.Play();
                 }
+                //Debug.Log("Applying spin force to car");
                 ApplySpin(rb);
             }
         }
@@ -30,7 +37,7 @@ public class SlipperyObstacle : MonoBehaviour
         // Apply stronger, more dramatic spin
         Vector3 randomSpin = new Vector3(
             Random.Range(-1f, 1f),
-            Random.Range(0.5f, 1f), // Add some upward spin for more drama
+            Random.Range(0.5f, 1f), // Add some upward spin
             Random.Range(-1f, 1f)
         ).normalized * spinForce;
 
@@ -44,5 +51,6 @@ public class SlipperyObstacle : MonoBehaviour
         ).normalized * spinForce * 0.8f;
 
         rb.AddForce(sidewaysForce, ForceMode.VelocityChange);
+        //Debug.Log($"Applied spin force: {randomSpin}");
     }
 }
